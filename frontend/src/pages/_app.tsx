@@ -2,7 +2,6 @@ import CosmosWalletConnectProvider from '../components/WalletConnectProvider'
 import '../i18n'
 import '../styles/index.scss'
 import Index from './index'
-import { appWithTranslation } from 'next-i18next'
 import { Suspense } from 'react'
 
 const App = () => {
@@ -15,4 +14,4 @@ const App = () => {
     )
 }
 
-export default appWithTranslation(App)
+export default App

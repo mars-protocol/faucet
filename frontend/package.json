@@ -34,7 +34,6 @@
         "i18next-http-backend": "^1.4.1",
         "make-plural": "^7.1.0",
         "next": "^12.2.5",
-        "next-i18next": "^11.3.0",
         "numeral": "^2.0.6",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
