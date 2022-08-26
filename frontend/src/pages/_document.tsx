@@ -46,11 +46,6 @@ export default function Document() {
                 <meta name='msapplication-TileColor' content='#ffffff' />
                 <meta name='theme-color' content='#ffffff' />
                 <meta name='terra-webextension' />
-                <meta
-                    name='viewport'
-                    content='width=device-width,initial-scale=1,shrink-to-fit=no'
-                />
-                <title>Mars - Testnet Faucet</title>
             </Head>
             <body>
                 <Main />
