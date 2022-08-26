@@ -7,18 +7,20 @@ import { Suspense } from 'react'
 
 const App = () => {
     return (
-        <Suspense fallback={null}>
-            <CosmosWalletConnectProvider>
-                <Head>
-                    <meta
-                        name='viewport'
-                        content='width=device-width,initial-scale=1,shrink-to-fit=no'
-                    />
-                    <title>Mars - Testnet Faucet</title>
-                </Head>
-                <Index />
-            </CosmosWalletConnectProvider>
-        </Suspense>
+        <>
+            <Head>
+                <meta
+                    name='viewport'
+                    content='width=device-width,initial-scale=1,shrink-to-fit=no'
+                />
+                <title>Mars - Testnet Faucet</title>
+            </Head>
+            <Suspense fallback={null}>
+                <CosmosWalletConnectProvider>
+                    <Index />
+                </CosmosWalletConnectProvider>
+            </Suspense>
+        </>
     )
 }
 
