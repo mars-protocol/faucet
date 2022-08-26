@@ -84,59 +84,57 @@
             flex-direction: column;
             gap: space(4);
 
-            > div {
-                > div,
-                button,
-                a {
-                    background: transparent;
-                    @include padding(2);
-                    box-shadow: none;
+            .wallet,
+            button,
+            a {
+                background: transparent;
+                @include padding(2);
+                box-shadow: none;
+                display: flex;
+                align-items: center;
+                appearance: none;
+                border: none;
+                width: 100%;
+                text-decoration: none;
+                border-radius: space(2);
+                cursor: pointer;
+
+                &.disabled {
+                    pointer-events: none;
+                    img,
+                    .info .name {
+                        opacity: 0.5;
+                    }
+                }
+
+                &:hover {
+                    background-color: $alphaWhite10;
+                }
+
+                img {
+                    height: space(15);
+                    width: space(15);
+                }
+
+                .info {
+                    font-weight: $fontWeightRegular;
                     display: flex;
-                    align-items: center;
-                    appearance: none;
-                    border: none;
-                    width: 100%;
-                    text-decoration: none;
-                    border-radius: space(2);
-                    cursor: pointer;
+                    flex-direction: column;
+                    margin-left: space(5);
 
-                    &.disabled {
-                        pointer-events: none;
-                        img,
-                        .info .name {
-                            opacity: 0.5;
-                        }
+                    .name {
+                        @include typoLcaps;
+                        color: $fontColorLightPrimary;
                     }
 
-                    &:hover {
-                        background-color: $alphaWhite10;
-                    }
+                    .description {
+                        @include margin(1, 0, 0);
+                        color: $fontColorLightTertiary;
+                        text-align: left;
+                        @include typoM;
 
-                    img {
-                        height: space(15);
-                        width: space(15);
-                    }
-
-                    .info {
-                        font-weight: $fontWeightRegular;
-                        display: flex;
-                        flex-direction: column;
-                        margin-left: space(5);
-
-                        .name {
-                            @include typoLcaps;
-                            color: $fontColorLightPrimary;
-                        }
-
-                        .description {
-                            @include margin(1, 0, 0);
-                            color: $fontColorLightTertiary;
-                            text-align: left;
-                            @include typoM;
-
-                            &.capitalize {
-                                text-transform: capitalize;
-                            }
+                        &.capitalize {
+                            text-transform: capitalize;
                         }
                     }
                 }

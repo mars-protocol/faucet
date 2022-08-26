@@ -36,6 +36,7 @@ const CosmosWalletConnectProvider: FC<WrapperComponent> = ({ children }) => {
                     modalHeader: styles.header,
                     modalCloseButton: styles.close,
                     walletList: styles.list,
+                    wallet: styles.wallet,
                     walletImage: styles.image,
                     walletInfo: styles.info,
                     walletName: styles.name,
