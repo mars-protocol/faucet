@@ -27,6 +27,18 @@
   font-display: swap;
 }
 
+html,
+body {
+  font-family: Inter, sans-serif;
+  font-weight: $fontWeightRegular;
+  font-style: normal;
+  font-size: $rem-base;
+  line-height: space(6);
+  color: $fontColorLightPrimary;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
 a {
   color: $colorPrimary;
   text-decoration: none;
@@ -58,6 +70,20 @@ h2,
   @include typoH2caps;
 }
 
+h3,
+.h3 {
+  @include typoH3;
+}
+
+.h3Caps {
+  @include typoH3caps;
+}
+
+h4,
+.h4 {
+  @include typoH4;
+}
+
 h5,
 .h5,
 .xxl {
@@ -72,6 +98,10 @@ h6,
 
 .xl {
   @include typoXL;
+}
+
+.lCaps {
+  @include typoLcaps;
 }
 
 .m {
@@ -112,4 +142,48 @@ button,
 .button {
   @include typoButton;
   font-weight: $fontWeightRegular;
+}
+
+input,
+textarea {
+  font-family: Inter, sans-serif;
+  color: $fontColorLightPrimary;
+  @include typoL;
+}
+
+.sub2 {
+  @include typoScaps;
+  opacity: 0.3;
+}
+
+.body2 {
+  @include typoS;
+}
+
+.caption {
+  @include typoXS;
+}
+
+.overline {
+  @include typoXXScaps;
+}
+
+.faded {
+  opacity: 0.6;
+}
+
+.number {
+  white-space: nowrap;
+  font-feature-settings: 'tnum' on;
+}
+
+.tooltip {
+  border-bottom: 1px dashed $alphaWhite60;
+  transition: border 0.2s;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    border-bottom-color: transparent;
+  }
 }

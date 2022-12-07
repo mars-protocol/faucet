@@ -15,17 +15,19 @@ const ConnectButton = ({ textOverride, variant }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <button
-      className={
-        variant
-          ? `${styles.button} ${styles.connect} ${variant}`
-          : `${styles.button} ${styles.connect}`
-      }
-      onClick={connect}
-    >
-      <WalletSVG />
-      <span>{textOverride || t('common.connectWallet')}</span>
-    </button>
+    <div className={styles.wrapper}>
+      <button
+        className={
+          variant
+            ? `${styles.button} ${styles.connect} ${variant}`
+            : `${styles.button} ${styles.connect}`
+        }
+        onClick={connect}
+      >
+        <WalletSVG />
+        <span className='overline'>{textOverride || t('common.connectWallet')}</span>
+      </button>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@
 
 .button {
   display: flex;
-  flex: 0 0 auto;
+  flex: 1;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -10,16 +10,21 @@
   border-radius: rem-calc(20);
   height: rem-calc(31);
   @include padding(0.5, 4, 0);
-  @include typoButton;
+  @include typoS;
   cursor: pointer;
   color: $colorWhite;
-  outline: none;
-  background-color: $colorSecondaryAlpha;
   border: 1px solid $alphaWhite60;
+  outline: none;
+  background: $colorSecondaryAlpha;
 
   &.connect {
     height: rem-calc(31);
     font-weight: $fontWeightRegular;
+    background: $alphaBlack10;
+
+    &:hover {
+      background: $alphaWhite60;
+    }
 
     svg {
       @include margin(-0.25, 2, 0, 0);

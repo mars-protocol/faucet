@@ -77,6 +77,23 @@ $backgroundBodyDark: #141621;
   border-radius: rem-calc(12);
 }
 
+/* Devider */
+@mixin devider10 {
+  border-bottom: 1px solid $alphaWhite10;
+}
+
+@mixin devider20 {
+  border-bottom: 1px solid $alphaWhite20;
+}
+
+@mixin devider40 {
+  border-bottom: 1px solid $alphaWhite40;
+}
+
+@mixin devider60 {
+  border-bottom: 1px solid $alphaWhite60;
+}
+
 /* Typography */
 $fontWeightLight: 300;
 $fontWeightRegular: 400;
@@ -99,25 +116,37 @@ $fontColorLightTertiary: $alphaWhite40;
 }
 
 @mixin typoH2 {
-  font-size: rem-calc(30.42);
-  line-height: space(10);
+  font-size: rem-calc(38.49);
+  line-height: space(14);
 }
 
 @mixin typoH2caps {
   @include typoH2;
   text-transform: uppercase;
+  letter-spacing: rem-calc(9);
 }
 
 @mixin typoH3 {
-  font-size: rem-calc(24.03);
-  line-height: space(9);
-  font-weight: $fontWeightRegular;
+  font-size: rem-calc(30.42);
+  line-height: space(10);
+}
+
+@mixin typoH3caps {
+  font-size: rem-calc(30.42);
+  line-height: space(10);
+  text-transform: uppercase;
 }
 
 @mixin typoH4 {
   font-size: rem-calc(24.03);
   line-height: space(9);
   font-weight: $fontWeightRegular;
+}
+
+@mixin typoH4caps {
+  @include typoH4;
+  text-transform: uppercase;
+  letter-spacing: rem-calc(3);
 }
 
 @mixin typoXXL {
@@ -127,7 +156,7 @@ $fontColorLightTertiary: $alphaWhite40;
 
 @mixin typoXXLcaps {
   @include typoXXL;
-  font-weight: $fontWeightLight;
+  font-weight: $fontWeightRegular;
   text-transform: uppercase;
   letter-spacing: rem-calc(3);
 }
@@ -215,6 +244,7 @@ $fontColorLightTertiary: $alphaWhite40;
 }
 
 @mixin typoButton {
+  font-family: Inter, sans-serif;
   @include typoS;
   font-weight: $fontWeightSemibold;
 }
@@ -228,23 +258,6 @@ $fontColorLightTertiary: $alphaWhite40;
 @mixin typoNetwork {
   font-size: rem-calc(10.53);
   font-weight: $fontWeightSemibold;
-}
-
-/* Devider */
-@mixin devider10 {
-  border-bottom: 1px solid $alphaWhite10;
-}
-
-@mixin devider20 {
-  border-bottom: 1px solid $alphaWhite20;
-}
-
-@mixin devider40 {
-  border-bottom: 1px solid $alphaWhite40;
-}
-
-@mixin devider60 {
-  border-bottom: 1px solid $alphaWhite60;
 }
 
 /* Spacing */

@@ -7,8 +7,8 @@ import styles from './ConnectButton.module.scss'
 import { CheckSVG, CopySVG, ExternalSVG, MarsSVG, WalletSVG } from './Svg'
 import {
   ChainInfoID,
-  fetchBalances,
   SimpleChainInfoList,
+  fetchBalances,
   useWallet,
   useWalletManager,
 } from '@marsprotocol/wallet-connector'
@@ -65,7 +65,7 @@ const ConnectedButton = () => {
   }, [address, chainInfo, userBalance])
 
   return (
-    <>
+    <div className={styles.wrapper}>
       {chainInfo?.chainId !== ChainInfoID.Mars1 && (
         <span className={styles.network}>{chainInfo?.chainId}</span>
       )}
@@ -96,6 +96,7 @@ const ConnectedButton = () => {
               2,
               true,
               false,
+              ' MARS',
             )}`
           ) : (
             <CircularProgress size={12} className={styles.circularProgress} />
@@ -144,7 +145,9 @@ const ConnectedButton = () => {
                 </button>
                 <button className={styles.external} onClick={viewOnFinder}>
                   <ExternalSVG color={colors.secondaryDark} />{' '}
-                  {t('common.viewOnExplorer', { explorer: blockExplorerName })}
+                  {t('common.viewOnExplorer', {
+                    explorer: blockExplorerName,
+                  })}
                 </button>
               </div>
             </div>
@@ -152,7 +155,7 @@ const ConnectedButton = () => {
           <div className={styles.clickAway} role='button' onClick={onClickAway} />
         </>
       )}
-    </>
+    </div>
   )
 }
 
