@@ -2,71 +2,71 @@
 @use 'fonts' as *;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 html,
 body {
-    font-family: Inter, sans-serif;
-    font-weight: $fontWeightRegular;
-    font-style: normal;
-    font-size: $rem-base;
-    line-height: space(6);
-    color: $fontColorLightPrimary;
-    word-wrap: break-word;
-    word-break: break-word;
-    scrollbar-width: none;
-    width: 100vw;
+  font-family: Inter, sans-serif;
+  font-weight: $fontWeightRegular;
+  font-style: normal;
+  font-size: $rem-base;
+  line-height: space(6);
+  color: $fontColorLightPrimary;
+  word-wrap: break-word;
+  word-break: break-word;
+  scrollbar-width: none;
+  width: 100vw;
 }
 
 .tippyContainer {
-    @include layoutTooltip;
+  @include layoutTooltip;
 }
 
 body {
-    min-height: 100vh;
-    position: relative;
+  min-height: 100vh;
+  position: relative;
 }
 
 .desktop {
-    display: none;
+  display: none;
 }
 
 .tablet {
-    display: none;
+  display: none;
 }
 
 .mobile {
-    display: block;
+  display: block;
 }
 
 @media screen and (min-width: $bpSmallHigh) {
-    .tablet {
-        display: block;
-    }
+  .tablet {
+    display: block;
+  }
 
-    .mobile {
-        &:not(.tablet) {
-            display: none;
-        }
+  .mobile {
+    &:not(.tablet) {
+      display: none;
     }
+  }
 }
 
 @media screen and (min-width: $bpDesktopLow) {
-    .desktop {
-        display: block;
-    }
+  .desktop {
+    display: block;
+  }
 
-    .tablet {
-        &:not(.desktop) {
-            display: none;
-        }
+  .tablet {
+    &:not(.desktop) {
+      display: none;
     }
+  }
 }
