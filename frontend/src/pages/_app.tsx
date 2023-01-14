@@ -10,7 +10,7 @@ const App = () => {
     <>
       <Head>
         <meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no' />
-        <title>Mars - Testnet Faucet</title>
+        <title>Mars Hub Testnet Faucet</title>
       </Head>
       <Suspense fallback={null}>
         <CosmosWalletConnectProvider>
