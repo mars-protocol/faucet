@@ -16,13 +16,12 @@ export default function Document() {
         <meta name='twitter:creator' content='@mars_protocol' />
         <meta name='msapplication-config' content='/browserconfig.xml' />
         <meta property='og:url' content='https://faucet.marsprotocol.io' />
-        <meta property='og:title' content='Mars - Token Migration' />
+        <meta property='og:title' content='Mars Hub - Testnet Faucet' />
         <meta property='og:description' content='Mars Hub Testnet Faucet.' />
         <meta property='og:image' content='https://marsprotocol.io/banner.png' />
-        <meta property='og:site_name' content='Mars - Token Migration' />
+        <meta property='og:site_name' content='Mars Hub - Testnet Faucet' />
         <meta name='msapplication-TileColor' content='#ffffff' />
         <meta name='theme-color' content='#ffffff' />
-        <meta name='terra-webextension' />
       </Head>
       <body>
         <Main />
