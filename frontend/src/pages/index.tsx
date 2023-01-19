@@ -1,8 +1,9 @@
+import { CookieConsent } from '../components/CookieConsent'
 import Header from '../components/Header'
 import Home from '../components/Home'
 import Intro from '../components/Intro'
 import styles from './index.module.scss'
-import { WalletConnectionStatus, useWallet } from '@marsprotocol/wallet-connector'
+import { useWallet, WalletConnectionStatus } from '@marsprotocol/wallet-connector'
 import { useEffect, useState } from 'react'
 
 const Index = () => {
@@ -25,6 +26,7 @@ const Index = () => {
         <Header />
         <div className={styles.content}>{isConnected ? <Home /> : <Intro />}</div>
         <div className={styles.copyright}>&copy; 2022 MARS</div>
+        <CookieConsent />
       </div>
     </div>
   )
