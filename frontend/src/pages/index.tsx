@@ -1,4 +1,3 @@
-import { CookieConsent } from '../components/CookieConsent'
 import Header from '../components/Header'
 import Home from '../components/Home'
 import Intro from '../components/Intro'
@@ -25,8 +24,7 @@ const Index = () => {
       <div className={styles.body}>
         <Header />
         <div className={styles.content}>{isConnected ? <Home /> : <Intro />}</div>
-        <div className={styles.copyright}>&copy; 2022 MARS</div>
-        <CookieConsent />
+        <div className={styles.copyright}>&copy; 2023 MARS</div>
       </div>
     </div>
   )
