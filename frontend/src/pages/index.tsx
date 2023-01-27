@@ -2,11 +2,11 @@ import Header from '../components/Header'
 import Home from '../components/Home'
 import Intro from '../components/Intro'
 import styles from './index.module.scss'
-import { useWallet, WalletConnectionStatus } from '@marsprotocol/wallet-connector'
+import { useWalletManager, WalletConnectionStatus } from '@marsprotocol/wallet-connector'
 import { useEffect, useState } from 'react'
 
 const Index = () => {
-  const { status } = useWallet()
+  const { status } = useWalletManager()
   const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {

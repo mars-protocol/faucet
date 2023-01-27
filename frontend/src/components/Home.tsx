@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next'
 
 const Home = () => {
   const { t } = useTranslation()
-  const { address = '', chainInfo } = useWallet()
+  const { recentWallet } = useWallet()
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
   const [errorText, setErrorText] = useState('')
@@ -41,7 +41,7 @@ const Home = () => {
 
     axios
       .post(faucetUrl, {
-        address: address,
+        address: recentWallet?.account.address,
         denom: 'umars',
         response: captchaResponse,
       })
@@ -158,9 +158,9 @@ const Home = () => {
           <p className={styles.copy}>{t('faucet.useTheFaucet')}</p>
           <dl className={styles.data}>
             <dt className={styles.label}>{t('common.chainId')}</dt>
-            <dd className={styles.value}>{chainInfo?.chainId}</dd>
+            <dd className={styles.value}>{recentWallet?.network.chainId}</dd>
             <dt className={styles.label}>{t('common.testnetAddress')}</dt>
-            <dd className={styles.value}>{truncate(address, [6, 4])}</dd>
+            <dd className={styles.value}>{truncate(recentWallet?.account.address, [6, 4])}</dd>
           </dl>
           <div className={styles.captcha}>
             <ReCAPTCHA

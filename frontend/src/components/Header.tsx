@@ -2,10 +2,10 @@ import ConnectButton from './ConnectButton'
 import ConnectedButton from './ConnectedButton'
 import styles from './Header.module.scss'
 import { MarsLogo } from './Svg'
-import { WalletConnectionStatus, useWallet } from '@marsprotocol/wallet-connector'
+import { useWalletManager, WalletConnectionStatus } from '@marsprotocol/wallet-connector'
 
 const Header = () => {
-  const { status } = useWallet()
+  const { status } = useWalletManager()
   return (
     <div className={styles.header}>
       <div className={styles.empty} />

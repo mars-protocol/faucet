@@ -1,10 +1,12 @@
-import buttonStyles from './Button.module.scss'
 import CircularProgress from './CircularProgress'
 import styles from './WalletConnectProvider.module.scss'
-import { ChainInfoID, WalletManagerProvider, WalletType } from '@marsprotocol/wallet-connector'
+import { ChainInfoID, WalletID, WalletManagerProvider } from '@marsprotocol/wallet-connector'
 import i18next from 'i18next'
 import { FC, useState } from 'react'
-import { Trans } from 'react-i18next'
+
+const enabledWallets = [WalletID.Keplr, WalletID.Cosmostation]
+
+const defaultChainId = ChainInfoID.MarsAres1
 
 const CosmosWalletConnectProvider: FC<WrapperComponent> = ({ children }) => {
   const [i18nInit, setI18nInit] = useState(false)
@@ -16,53 +18,15 @@ const CosmosWalletConnectProvider: FC<WrapperComponent> = ({ children }) => {
   if (i18nInit) {
     return (
       <WalletManagerProvider
-        defaultChainId={ChainInfoID.MarsAres1}
-        enablingStringOverride={<Trans i18nKey='global.connectingToWallet' />}
-        walletConnectClientMeta={{
-          name: 'Mars - Tesnet Faucet',
-          description: 'Mars Hub Testnet Faucet.',
-          url: 'https://faucet.marsprotocol.io',
-          icons: ['https://marsprotocol.io/favicon.svg'],
-        }}
-        classNames={{
-          modalContent: styles.content,
-          modalOverlay: styles.overlay,
-          modalHeader: styles.header,
-          modalCloseButton: styles.close,
-          walletList: styles.list,
-          wallet: styles.wallet,
-          walletImage: styles.image,
-          walletInfo: styles.info,
-          walletName: styles.name,
-          walletDescription: styles.description,
-          textContent: styles.text,
-        }}
-        enabledWalletTypes={[WalletType.Keplr]}
-        walletMetaOverride={{
-          [WalletType.Keplr]: {
-            description: <Trans i18nKey='global.keplrBrowserExtension' />,
-            imageUrl: '/images/wallets/keplr-wallet-extension.png',
-          },
-          [WalletType.WalletConnectKeplr]: {
-            name: <Trans i18nKey='global.walletConnect' />,
-            description: <Trans i18nKey='global.walletConnectDescription' />,
-            imageUrl: '/images/wallets/keplr-walletconnect.png',
-          },
-        }}
-        localStorageKey='walletConnection'
+        defaultChainId={defaultChainId}
+        enabledWallets={enabledWallets}
+        persistent
         renderLoader={() => (
           <div className={styles.loader}>
             <CircularProgress size={30} />
           </div>
         )}
         closeIcon={<div />}
-        enablingMeta={{
-          text: <Trans i18nKey='global.walletResetText' />,
-          textClassName: styles.text,
-          buttonText: <Trans i18nKey='global.walletReset' />,
-          buttonClassName: ` ${buttonStyles.button} ${buttonStyles.primary} ${buttonStyles.small} ${buttonStyles.solid} ${styles.button}`,
-          contentClassName: styles.enableContent,
-        }}
       >
         {children}
       </WalletManagerProvider>

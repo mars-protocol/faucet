@@ -7,8 +7,8 @@ import styles from './ConnectButton.module.scss'
 import { CheckSVG, CopySVG, ExternalSVG, MarsSVG, WalletSVG } from './Svg'
 import {
   ChainInfoID,
-  SimpleChainInfoList,
   fetchBalances,
+  SimpleChainInfoList,
   useWallet,
   useWalletManager,
 } from '@marsprotocol/wallet-connector'
@@ -17,15 +17,13 @@ import { useTranslation } from 'react-i18next'
 import useClipboard from 'react-use-clipboard'
 
 const ConnectedButton = () => {
-  // ----------------
-  // CONSTANTS
-  // ----------------
-
   // ---------------
   // EXTERNAL HOOKS
   // ---------------
   const { disconnect } = useWalletManager()
-  const { name, address = '', chainInfo } = useWallet()
+  const { recentWallet } = useWallet()
+  const chainId = recentWallet?.network.chainId ?? ''
+  const address = recentWallet?.account.address ?? ''
   const [userBalance, setUserBalance] = useState<string | undefined>()
   const { t } = useTranslation()
   const [isCopied, setCopied] = useClipboard(address, {
@@ -35,10 +33,8 @@ const ConnectedButton = () => {
   // ---------------
   // VARIABLES
   // ---------------
-  const blockExplorerURL =
-    chainInfo && SimpleChainInfoList[chainInfo.chainId as ChainInfoID].explorer
-  const blockExplorerName =
-    chainInfo && SimpleChainInfoList[chainInfo.chainId as ChainInfoID].explorerName
+  const blockExplorerURL = recentWallet && SimpleChainInfoList[chainId as ChainInfoID].explorer
+  const blockExplorerName = recentWallet && SimpleChainInfoList[chainId as ChainInfoID].explorerName
   const [showDetails, setShowDetails] = useState(false)
 
   const viewOnFinder = useCallback(() => {
@@ -51,7 +47,7 @@ const ConnectedButton = () => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const userBalances = await fetchBalances(address, chainInfo?.chainId)
+      const userBalances = await fetchBalances(address, chainId)
 
       if (userBalances && userBalances.balances?.length) {
         setUserBalance(userBalances.balances[0].amount)
@@ -62,13 +58,11 @@ const ConnectedButton = () => {
       }
     }, 3000)
     return () => clearInterval(interval)
-  }, [address, chainInfo, userBalance])
+  }, [address, chainId, userBalance])
 
   return (
     <div className={styles.wrapper}>
-      {chainInfo?.chainId !== ChainInfoID.Mars1 && (
-        <span className={styles.network}>{chainInfo?.chainId}</span>
-      )}
+      {chainId !== ChainInfoID.Mars1 && <span className={styles.network}>{chainId}</span>}
       <button
         className={styles.button}
         onClick={() => {
@@ -76,21 +70,20 @@ const ConnectedButton = () => {
         }}
       >
         <span className={styles.walletIcon}>
-          {chainInfo?.chainId === ChainInfoID.Mars1 ||
-          chainInfo?.chainId === ChainInfoID.MarsAres1 ? (
+          {chainId === ChainInfoID.Mars1 || chainId === ChainInfoID.MarsAres1 ? (
             <MarsSVG className={styles.osmosisIcon} />
           ) : (
             <WalletSVG className={styles.walletIcon} />
           )}
         </span>
-        <span className={styles.address}>{name ? name : truncate(address, [2, 4])}</span>
+        <span className={styles.address}>{truncate(address, [2, 4])}</span>
         <div className={styles.balance}>
           {userBalance ? (
             `${formatValue(
               lookup(
                 Number(userBalance),
-                chainInfo?.stakeCurrency?.coinDenom || '',
-                chainInfo?.stakeCurrency?.coinDecimals || 6,
+                recentWallet?.network.defaultCurrency?.coinDenom || '',
+                recentWallet?.network.defaultCurrency?.coinDecimals || 6,
               ),
               2,
               2,
@@ -109,12 +102,14 @@ const ConnectedButton = () => {
             <div className={styles.detailsHeader}>
               <div className={styles.detailsBalance}>
                 <p>
-                  <span className={styles.detailsDenom}>{chainInfo?.stakeCurrency?.coinDenom}</span>
+                  <span className={styles.detailsDenom}>
+                    {recentWallet?.network.defaultCurrency?.coinDenom}
+                  </span>
                   {formatValue(
                     lookup(
                       Number(userBalance),
-                      chainInfo?.stakeCurrency?.coinDenom || '',
-                      chainInfo?.stakeCurrency?.coinDecimals || 6,
+                      recentWallet?.network.defaultCurrency?.coinDenom || '',
+                      recentWallet?.network.defaultCurrency?.coinDecimals || 6,
                     ),
                     2,
                     2,
@@ -129,7 +124,7 @@ const ConnectedButton = () => {
               </div>
             </div>
             <div className={styles.detailsBody}>
-              <p className={styles.addressLabel}>{name ? `‘${name}’` : t('common.yourAddress')}</p>
+              <p className={styles.addressLabel}>{t('common.yourAddress')}</p>
               <p className={styles.address}>{address}</p>
               <p className={styles.addressMobile}>{truncate(address, [14, 14])}</p>
               <div className={styles.buttons}>
