@@ -24,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "@marsprotocol/wallet-connector": "^1.1.6",
+    "@marsprotocol/wallet-connector": "^1.1.7",
     "@tippyjs/react": "^4.2.6",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.2",
