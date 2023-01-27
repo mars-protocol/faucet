@@ -2388,10 +2388,10 @@
     big-integer "^1.6.48"
     utility-types "^3.10.0"
 
-"@marsprotocol/wallet-connector@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@marsprotocol/wallet-connector/-/wallet-connector-1.1.4.tgz#3d0ba91ef6d513863a2654f849860a6e4736e68b"
-  integrity sha512-T5UY8YbDNZzbTLtXv6s8XQ1gOECwWzixHoIVOHlFyZEQDV/kax3ka0SI/bN2Kamr++2U3ecG+xhBw/gZq63ZPw==
+"@marsprotocol/wallet-connector@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@marsprotocol/wallet-connector/-/wallet-connector-1.1.5.tgz#0aa9fd5315149215af8ea95c29175a2cca0e5653"
+  integrity sha512-bOh6LpeV5pbKaBEPxW8cMsTTL1MRYj0jOBgsufgiZ4XsRbxILxXb7EYfBWEkSKxhzYVZWtR8QXDiWdHbBt5s0Q==
   dependencies:
     "@cosmjs/cosmwasm-stargate" "^0.29.5"
     "@delphi-labs/shuttle" "^1.7.1"

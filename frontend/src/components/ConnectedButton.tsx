@@ -20,7 +20,8 @@ const ConnectedButton = () => {
   // ---------------
   // EXTERNAL HOOKS
   // ---------------
-  const { disconnect } = useWalletManager()
+  const { disconnect } = useWallet()
+  const { disconnect: terminate } = useWalletManager()
   const { recentWallet } = useWallet()
   const chainId = recentWallet?.network.chainId ?? ''
   const address = recentWallet?.account.address ?? ''
@@ -59,6 +60,11 @@ const ConnectedButton = () => {
     }, 3000)
     return () => clearInterval(interval)
   }, [address, chainId, userBalance])
+
+  const handleDisconnect = () => {
+    disconnect()
+    terminate()
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -120,7 +126,11 @@ const ConnectedButton = () => {
                 </p>
               </div>
               <div className={styles.detailsButton}>
-                <Button text={t('common.disconnect')} color='secondary' onClick={disconnect} />
+                <Button
+                  text={t('common.disconnect')}
+                  color='secondary'
+                  onClick={handleDisconnect}
+                />
               </div>
             </div>
             <div className={styles.detailsBody}>
