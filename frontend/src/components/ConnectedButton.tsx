@@ -66,6 +66,7 @@ const ConnectedButton = () => {
     terminate()
   }
 
+
   return (
     <div className={styles.wrapper}>
       {chainId !== ChainInfoID.Mars1 && <span className={styles.network}>{chainId}</span>}
