@@ -90,7 +90,7 @@ const Home = () => {
             }
           }
         }
-        setErrorText(t('faucet.anErrorOccurred', { error: errText }))
+        setErrorText(`${t('faucet.anErrorOccurred', { error: errText })}`)
         setSending(false)
         setError(true)
         setSuccess(false)

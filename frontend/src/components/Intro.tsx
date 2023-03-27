@@ -11,7 +11,7 @@ const Intro = () => {
         <img
           src='/images/redbank.svg'
           className={styles.redbank}
-          alt={t('faucet.marsTestnetFaucet')}
+          alt={`${t('faucet.marsTestnetFaucet')}`}
         />
         <h1 className={styles.title}>{t('faucet.marsTestnetFaucet')}</h1>
         <h2 className={styles.subtitle}>{t('faucet.welcomeMartian')}</h2>
